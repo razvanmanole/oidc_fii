@@ -16,6 +16,9 @@ provider "aws" {
 
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
+data "aws_availability_zones" "available" {
+  state = "available"
+}
 
 data "aws_ami" "amazon_linux" {
   most_recent = true
@@ -53,7 +56,7 @@ resource "aws_internet_gateway" "cloudpulse" {
 resource "aws_subnet" "public" {
   vpc_id                  = aws_vpc.cloudpulse.id
   cidr_block              = var.public_subnet_cidr
-  availability_zone       = var.availability_zone
+  availability_zone       = data.aws_availability_zones.available.names[0]
   map_public_ip_on_launch = true
   tags                    = { Name = "${var.project_name}-public-subnet" }
 }
