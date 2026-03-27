@@ -73,6 +73,6 @@ jobs:
           echo "| :--- | :--- |" >> $GITHUB_STEP_SUMMARY
           echo "| **Flask Application** | [Click here to Open]($(terraform output -raw app_url)) |" >> $GITHUB_STEP_SUMMARY
           echo "| **Grafana Dashboard** | [Click here to Open]($(terraform output -raw monitoring_url)) |" >> $GITHUB_STEP_SUMMARY
-          echo "| **Locust Load Tester** | [Click here to Open](http://$(terraform output -raw monitoring_instance_ip):8089) |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Locust Load Tester** | [Click here to Open]($(terraform output -raw locust_url)) |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "💡 _Note: It may take 1-2 minutes for Docker containers to fully start._" >> $GITHUB_STEP_SUMMARY
