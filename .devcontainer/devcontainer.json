@@ -1,18 +1,24 @@
 {
   "name": "CloudPulse Terraform Env",
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  // Use a slim Ubuntu base instead of the massive 'universal' image
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "features": {
     "ghcr.io/devcontainers/features/terraform:1": {
+      "version": "latest"
+    },
+    // Adding AWS CLI here is usually helpful for OIDC labs
+    "ghcr.io/devcontainers/features/aws-cli:1": {
       "version": "latest"
     }
   },
   "customizations": {
     "vscode": {
       "extensions": [
-        "hashicorp.terraform"
+        "hashicorp.terraform",
+        "tamasfe.even-better-toml"
       ]
     }
   },
-  // Automatically prepare the workspace on launch
+  // This command runs AFTER the features are installed and stable
   "postCreateCommand": "terraform init -backend=false"
 }
