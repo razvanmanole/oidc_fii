@@ -21,7 +21,6 @@ scrape_configs:
           # This is the path Promtail will "tail" for logs
           __path__: /var/log/cloudpulse/*.log
 
-  # Optional: Also send the system logs for extra "Wow" factor
   - job_name: system
     static_configs:
       - targets:

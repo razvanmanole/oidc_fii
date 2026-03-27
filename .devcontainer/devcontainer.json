@@ -1,12 +1,10 @@
 {
   "name": "CloudPulse Terraform Env",
-  // Use a slim Ubuntu base instead of the massive 'universal' image
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "features": {
     "ghcr.io/devcontainers/features/terraform:1": {
       "version": "latest"
     },
-    // Adding AWS CLI here is usually helpful for OIDC labs
     "ghcr.io/devcontainers/features/aws-cli:1": {
       "version": "latest"
     }
@@ -19,6 +17,5 @@
       ]
     }
   },
-  // This command runs AFTER the features are installed and stable
   "postCreateCommand": "terraform init -backend=false"
 }
